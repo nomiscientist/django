@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from myoldsite.views import hello
+from myoldsite.views import hello,getDate,getFutureDateTime
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/$',hello),
+    url(r'^now/$',getDate),
+    url(r'^now/plus/(\d{1,2})/$',getFutureDateTime),
 ]
