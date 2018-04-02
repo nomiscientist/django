@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 # there are two type of views class based and function based
@@ -13,4 +14,15 @@ def home(request):
 
     return render(request, 'accounts/home.html')
 
+def registerUser(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect("/account/login")
+    else:
+        form = UserCreationForm()
 
+        args = {"form": form}
+
+        return render(request,"accounts/registration.html",args)
