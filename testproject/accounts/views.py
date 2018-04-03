@@ -1,5 +1,14 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth.forms import UserCreationForm
+from accounts.forms import (
+    RegisterationForm, 
+    EditProfileForm
+)
+from django.contrib.auth.models import User
+# from django.contrib.auth.forms import UserChangeForm
+# from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth.forms import PasswordChangeForm
+
 
 # Create your views here.
 # there are two type of views class based and function based
@@ -16,13 +25,53 @@ def home(request):
 
 def registerUser(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterationForm(request.POST)
         if form.is_valid:
             form.save()
             return redirect("/account/login")
     else:
-        form = UserCreationForm()
+        form = RegisterationForm()
 
         args = {"form": form}
 
         return render(request,"accounts/registration.html",args)
+
+
+def profile(request):
+    args = {'user':request.user}
+    return render(request,"accounts/profile.html",args)
+
+
+
+def editProfile(request):
+    if request.method == "POST":
+        form = EditProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid:
+            form.save()
+            return redirect("/account/profile")
+    
+    else:
+        form = EditProfileForm(instance=request.user)
+        args = {'form': form}
+        return render(request,"accounts/edit_profile.html",args)
+
+
+def changePassword(request):
+    if request.method=="POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("/account/profile")
+
+    else:
+            form = PasswordChangeForm(user=request.user)
+            args = {'form':form}
+            return render(request,"accounts/change_password.html",args)
+
+
+
+
+
+
+
