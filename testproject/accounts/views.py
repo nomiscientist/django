@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # there are two type of views class based and function based
-@login_required
+# @login_required
 def home(request):
     # return  HttpResponse("Hello Pakistan from Home page of accounts!!")
 
@@ -42,7 +42,7 @@ def profile(request):
     return render(request,"accounts/profile.html",args)
 
 
-@login_required
+# @login_required
 def editProfile(request):
     if request.method == "POST":
         form = EditProfileForm(request.POST, instance=request.user)
@@ -56,7 +56,7 @@ def editProfile(request):
         args = {'form': form}
         return render(request,"accounts/edit_profile.html",args)
 
-@login_required
+# @login_required
 def changePassword(request):
     if request.method=="POST":
         form = PasswordChangeForm(data=request.POST, user=request.user)
