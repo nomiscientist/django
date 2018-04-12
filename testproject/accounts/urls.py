@@ -11,14 +11,14 @@ from django.contrib.auth.views import (
 
 urlpatterns =[
     url(r'^$',views.home),
-    url(r'^home/$',views.home),
-    url(r'^login/$',login,{'template_name':'accounts/login.html'}),
-    url(r'^logout/$',logout,{'template_name':'accounts/logout.html'}),
+    url(r'^home/$',views.home,name="home"),
+    url(r'^login/$',login,{'template_name':'accounts/login.html'},name="login"),
+    url(r'^logout/$',logout,{'template_name':'accounts/logout.html'}, name= "logout"),
     url(r'^register/$',views.registerUser, name="registerUser" ), 
     url(r'^profile/$',views.profile, name="profile" ),
     url(r'^profile/edit/$',views.editProfile, name="editProfile" ),
     url(r'^profile/change-password/$',views.changePassword, name="changePassword" ),
-    url(r'^reset-password/$',password_reset,name="password_reset"),
+    url(r'^reset-password/$',password_reset,{'template_name':'accounts/password-reset.html'},name="password_reset"),
     url(r'^reset-password/done/$',password_reset_done,name="password_reset_done"),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
     password_reset_confirm,name="password_reset_confirm"),
