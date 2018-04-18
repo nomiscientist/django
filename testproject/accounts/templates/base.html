@@ -13,7 +13,7 @@
 </head>
 <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-                <a class="navbar-brand" href="/account/login">Alector Lab</a>
+                <a class="navbar-brand" href="{% url 'accounts:login' %}">Alector Lab</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,35 +26,36 @@
                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'registerUser' %}">Register</a>
+                      <a class="nav-link" href="{% url 'accounts:registerUser' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="{% url 'profile' %}">Profile</a>
+                      <a class="nav-link disabled" href="{% url 'accounts:profile' %}">Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/account/profile/change-password">Change Password</a>
+                      <a class="nav-link disabled" href="{% url 'accounts:changePassword'   %}">Change Password</a>
                     </li>
+                    
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/account/reset-password">Reset Password</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link disabled" href="/account/logout">Logout</a>
+                      <a class="nav-link disabled" href="{% url 'accounts:logout' %}">Logout</a>
                     </li>
                   </ul>
                   {% else %}
                   <ul class="navbar-nav mr-auto">
                       <li class="nav-item active">
-                        <a class="nav-link" href="/account/home">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'accounts:home'  %}">Home<span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="/account/register">Register</a>
+                        <a class="nav-link" href="{% url 'accounts:registerUser' %}">Register</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="/account/login">Login</a>
+                        <a class="nav-link disabled" href="{% url 'accounts:password_reset' %} ">Reset Password</a>
                       </li>
-                    </ul>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                      </li>
+                  </ul>
 
-                    {% endif %}
+                  {% endif %}
 
 
                   <form class="form-inline my-2 my-md-0">

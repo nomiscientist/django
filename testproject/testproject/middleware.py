@@ -22,12 +22,13 @@ class LoginRequiredMiddleware():
         assert hasattr(request,'user')
 
         path = request.path_info.lstrip('/')
+        print(path)
 
         # if not request.user.is_authenticated():
         #     if not any(url.match(path) for url in EXEMPT_URL):
         #         return redirect(settings.LOGIN_URL)
 
-        if path == reverse("logout").lstrip('/'):
+        if path == reverse("accounts:logout").lstrip('/'):
             logout(request)
 
 

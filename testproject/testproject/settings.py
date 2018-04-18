@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'testproject.middleware.LoginRequiredMiddleware'
+    'testproject.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'testproject.urls'
@@ -136,16 +136,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = '/account/'
+LOGIN_REDIRECT_URL = '/accounts/'
 
-LOGIN_URL = '/account/login'
+LOGIN_URL = '/accounts/login'
 
 LOGIN_EXEMPT_URLS = (
-    r'^account/logout/$',
-    r'^account/register/$',
+    r'^accounts/logout/$',
+    r'^accounts/register/$',
+    r'^accounts/reset-password/$',
+    r'^accounts/reset-password/done/$',
+    r'^accounts/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^accounts/reset-password/complete/$',
+    r'^admin/[0-9A-Za-z]/$',
+    r'^admin/$',
 )
 
 
 EMAIL_HOST = 'localhost'
 
 EMAIL_PORT = 1025
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,"testproject/media")

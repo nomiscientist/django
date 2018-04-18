@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from testproject import views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     url(r'^$',views.loginRedirect, name="loginRedirect"),
     url(r'^admin/', admin.site.urls),
-    url(r'^account/',include('accounts.urls'))
-]
+    url(r'^accounts/', include('accounts.urls', namespace="accounts"))
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

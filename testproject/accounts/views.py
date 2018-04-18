@@ -28,7 +28,7 @@ def registerUser(request):
         form = RegisterationForm(request.POST)
         if form.is_valid:
             form.save()
-            return redirect("/account/login")
+            return redirect("/accounts/login")
     else:
         form = RegisterationForm()
 
@@ -36,7 +36,7 @@ def registerUser(request):
 
         return render(request,"accounts/registration.html",args)
 
-@login_required
+# @login_required
 def profile(request):
     args = {'user':request.user}
     return render(request,"accounts/profile.html",args)
@@ -49,7 +49,7 @@ def editProfile(request):
 
         if form.is_valid:
             form.save()
-            return redirect("/account/profile")
+            return redirect("/accounts/profile")
     
     else:
         form = EditProfileForm(instance=request.user)
@@ -62,7 +62,7 @@ def changePassword(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect("/account/profile")
+            return redirect("/accounts/profile")
 
     else:
             form = PasswordChangeForm(user=request.user)

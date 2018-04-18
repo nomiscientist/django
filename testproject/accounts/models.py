@@ -10,6 +10,10 @@ class UserProfile(models.Model):
     website = models.URLField(default='')
     city = models.CharField(max_length=50,default='')
     phone = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='profile_image',blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 def createProfile(sender, **kwargs):
     if kwargs["created"]:
