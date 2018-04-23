@@ -23,5 +23,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^$',views.loginRedirect, name="loginRedirect"),
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('accounts.urls', namespace="accounts"))
+    url(r'^accounts/', include('accounts.urls', namespace="accounts")),
+    url(r'^home/', include('home.urls', namespace="home"))
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

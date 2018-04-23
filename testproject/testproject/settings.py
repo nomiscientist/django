@@ -46,6 +46,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts',
+    'home',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'testproject.middleware.LoginRequiredMiddleware',
+    # 'testproject.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'testproject.urls'
@@ -136,7 +137,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-LOGIN_REDIRECT_URL = '/accounts/'
+LOGIN_REDIRECT_URL = '/home/'
 
 LOGIN_URL = '/accounts/login'
 
