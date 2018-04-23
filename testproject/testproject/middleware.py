@@ -30,7 +30,7 @@ class LoginRequiredMiddleware():
 
         if path == reverse("accounts:logout").lstrip('/'):
             logout(request)
-
+        
 
         exempt_url = any(url.match(path) for url in EXEMPT_URL)
 
