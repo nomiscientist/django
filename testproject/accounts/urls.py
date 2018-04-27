@@ -16,6 +16,7 @@ urlpatterns =[
     url(r'^logout/$',logout,{'template_name':'accounts/logout.html'}, name= "logout"),
     url(r'^register/$',views.registerUser, name="registerUser" ), 
     url(r'^profile/$',views.profile, name="profile" ),
+    url(r'^profile/(?P<pk>\d+)/$',views.profile, name="profile_with_pk" ),    
     url(r'^profile/edit/$',views.editProfile, name="editProfile" ),
     url(r'^profile/change-password/$',views.changePassword, name="changePassword" ),
 

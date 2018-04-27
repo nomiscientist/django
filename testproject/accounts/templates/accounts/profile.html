@@ -12,14 +12,16 @@
     <div class="container">
             <h1>User Profile</h1>
             <p>
-            <h2>username: {{ user.userprofile }}</h2>
-            <h2>First Name: {{ user.first_name }}</h2>            
-            <h2>Last Name: {{ user.last_name }}</h2>            
-            <h2>Email: {{ user.email }}</h2>            
-            <h2>Description: {{ user.userprofile.description }}</h2>            
-            <h2>phone: {{ user.userprofile.phone }}</h2>            
-            <h2>website: {{ user.userprofile.website }}</h2>            
-            <img src="{{ user.userprofile.image.url }}" width="200" height="220">
+                    <h2>username: {{ user.userprofile }}</h2>
+                    <h2>First Name: {{ user.first_name }}</h2>            
+                    <h2>Last Name: {{ user.last_name }}</h2>            
+                    <h2>Email: {{ user.email }}</h2>            
+                    <h2>Description: {{ user.userprofile.description }}</h2>            
+                    <h2>phone: {{ user.userprofile.phone }}</h2>            
+                    <h2>website: {{ user.userprofile.website }}</h2>
+                    {% if user.userprofile.image %}            
+                    <img src="{{ user.userprofile.image.url }}" width="200" height="220">
+                    {% endif %}
             </p>
 
     </div>

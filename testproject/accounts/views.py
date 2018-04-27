@@ -27,8 +27,14 @@ def registerUser(request):
         return render(request,"accounts/registration.html",args)
 
 # @login_required
-def profile(request):
-    args = {'user':request.user}
+def profile(request, pk=None):
+    # user = None
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+
+    args = {'user':user}
     return render(request,"accounts/profile.html",args)
 
 
