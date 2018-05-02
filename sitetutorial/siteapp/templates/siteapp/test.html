@@ -9,9 +9,12 @@
 <body>
     <h1>Test</h1>
     <p>
-        {% comment %} {{ person.name }} is {{ person.age }} years old. {% endcomment %}
+        {% comment "Just Testing" %} {{ person.name }} is {{ person.age }} years old. {% endcomment %}
         {% comment %} Hello, {{ person.first_name.upper }} {{ person.last_name.isdigit }}. {% endcomment %}
         {% comment %} Item 0 is {{ items.0 }}. {% endcomment %}
+
+        {# {% if not true %} #}
+
         My name is {{ person.second_name }}
     </p>
     

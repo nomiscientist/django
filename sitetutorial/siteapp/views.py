@@ -4,19 +4,25 @@ import datetime
 from django.http import HttpResponse
 
 # Create your views here.
-# def order(request):
-#     t = Template("siteapp/order.html")
-#     c = Context({'person_name': 'John Smith','company': 'Outdoor Equipment',
-#                  'ship_date': datetime.date(2017, 7, 2),'ordered_warranty': False})
-    
-#     return HttpResponse(request,)
 
+# Context way of httpResponse
 def order(request):
-    t = "siteapp/order.html"
-    c = {'person_name': 'John Smith','company': 'Outdoor Equipment',
-                 'ship_date': datetime.date(2017, 7, 2),'ordered_warranty': False}
+    fp = open("siteapp/templates/siteapp/order.html")
+    t = Template(fp.read())
+    fp.close()
+    c = Context({'person_name': 'John Smith','company': 'Outdoor Equipment',
+                 'ship_date': datetime.date(2017, 7, 2),'ordered_warranty': False})
+    html = t.render(c)
     
-    return render(request,t,c)
+    return HttpResponse(html)
+
+# Argumentative way of httpResponse
+# def order(request):
+#     t = "siteapp/order.html"
+#     c = {'person_name': 'John Smith','company': 'Outdoor Equipment',
+#                  'ship_date': datetime.date(2017, 7, 2),'ordered_warranty': False}
+    
+#     return render(request,t,c)
 
 class SilentAssertionError(Exception):
     silent_variable_failure = True
