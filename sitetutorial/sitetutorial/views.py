@@ -7,6 +7,23 @@ import datetime
 def hello(request):
     return HttpResponse("Hello Pakistan!")
 
+
+def display_meta(request):
+    # try:
+    #     ua = request.META['HTTP_USER_AGENT']
+    # except KeyError:
+    #     ua = 'unknown'
+
+    # ua = request.META.get("HTTP_USER_AGENT","unknown")
+    # return HttpResponse("Your Browser Info: %s" % ua )
+
+    values = request.META
+    html = []
+    for key in sorted(values):
+        html.append("<tr><td>%s</td><td>%s</td></tr>"%(key,values[key]))
+    return HttpResponse("<table>%s</table>"%"\n".join(html))
+
+
 # Old ways of rendering
 # def current_datetime(request):
 #     now = datetime.datetime.now()
