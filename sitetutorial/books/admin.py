@@ -2,6 +2,7 @@ from django.contrib import admin
 from books import models
 
 # Register your models here.
+# Users, Groups and Permissions
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = (
