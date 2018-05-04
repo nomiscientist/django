@@ -1,8 +1,38 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template.loader import get_template
+from sitetutorial import forms
 
 import datetime
+from django.core.mail import send_mail, get_connection
+
+
+def contact(request):
+    thanks_message = ""
+    if request.path == "/contact/thanks/":
+        thanks_message = "Thanks for your feedback"
+
+
+    if request.method == "POST":
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            con = get_connection('django.core.mail.backends.console.EmailBackend')
+            send_mail(
+                cd['subject'],
+                cd['message'],
+                cd['email'],
+                ['imfaisalpk@gmail.com'],
+                connection=con
+            )
+            return HttpResponseRedirect('/contact/thanks')
+    else:
+        form = forms.ContactForm(
+            initial = {'subject': "I love your site!"}
+        )
+    
+    return render(request,"contact_form.html",{"form":form, "message":thanks_message})
+
 
 def hello(request):
     return HttpResponse("Hello Pakistan!")

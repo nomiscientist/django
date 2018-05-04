@@ -10,6 +10,10 @@ urlpatterns = [
     url(r'^meta/$',views.display_meta),
     url(r'^time/$',views.current_datetime),
     url(r'^time/plus/(\d{1,2})/$',views.future_datetime),
+    url(r'^contact/$',views.contact),
+    url(r'^contact/thanks/$',views.contact),
+
+    
     url(r'^siteapp/',include('siteapp.urls',namespace="siteapp")),
     url(r'^books/',include('books.urls',namespace="books")), #try only '^'
 ]
