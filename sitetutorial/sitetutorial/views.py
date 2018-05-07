@@ -33,6 +33,9 @@ def contact(request):
     
     return render(request,"contact_form.html",{"form":form, "message":thanks_message})
 
+def debug(request):
+    pass
+
 
 def hello(request):
     return HttpResponse("Hello Pakistan!")
@@ -68,7 +71,7 @@ def current_datetime(request):
     args = {'current_date': now}
     return render(request,"current_datetime.html",args)
 
-def future_datetime(request, fhours):
+def future_datetime(request, fhours=1):
     try:
         fhours = int(fhours)
     except ValueError:
