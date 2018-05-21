@@ -17,7 +17,10 @@ urlpatterns = [
         url(r'^thanks/$',views.contact),
     ])),
 
-    
+    url(r'^test/$',views.test_method),
+    url(r'^test/1/$',views.view_1),
+    url(r'^test/2/$',views.view_2),
+        
     url(r'^siteapp/',include('siteapp.urls',namespace="siteapp")),
     url(r'^books/',include('books.urls',namespace="books")), #try only '^'
 ]

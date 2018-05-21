@@ -1,10 +1,61 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.template.loader import get_template
+from django.template import loader, RequestContext , Template
 from sitetutorial import forms
 
 import datetime
 from django.core.mail import send_mail, get_connection
+
+
+
+
+def test_method(request):
+    context = {"user":"mfaisal",'message':'<b>'}
+    return render(request,"test.html",context)
+
+
+
+def custom_proc(request):
+    context = {
+        'app':'My App',
+        'user':request.user,
+        'ip_address':request.META['REMOTE_ADDR']
+    }
+    return context
+
+
+def view_1(request):
+
+    # t = loader.get_template("test.html")
+    # context = RequestContext(
+    #     request,
+    #     {'message':'I am view 1'},
+    #     processors=[custom_proc]
+    # )
+    # return t.render(context)
+
+    # return render(request, 'test.html',
+    # {'message':'I am view 1'},
+    # RequestContext(request,processors=[custom_proc])
+    # )
+
+
+    t = loader.get_template("test.html")
+    c = RequestContext(
+        request,
+         {'message':'I am view 1'},
+         processors=[custom_proc]
+         )
+    return t.render(c)
+
+def view_2(request):
+    t = loader.get_template("test.html")
+    c = RequestContext(
+        request,
+         {'message':'I am view 2'},
+         processors=[custom_proc]
+         )
+    return t.render(c)
 
 
 def contact(request):
