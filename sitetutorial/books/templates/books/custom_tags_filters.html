@@ -7,8 +7,14 @@
     <title>Custom Tags and Filters</title>
 </head>
 <body>
-    {% load books_extra %}
-    {{var|initial_letter_filter}}
+    <!-- {% load books_custom_filters %}
+    {{var|initial_letter_filter}} -->
+
+    {% load  books_custom_tags %}
+    <!-- {% my_tag 123 "abcd" book.title warning=message|lower profile=user.profile %} -->
     
+    {% get_current_time "%Y-%m-%d %I:%M %p" as the_time %}
+    <p>The time is {{ the_time }}.</p>
+
 </body>
 </html>

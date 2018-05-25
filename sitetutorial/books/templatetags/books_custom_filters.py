@@ -43,7 +43,6 @@ def businesshours(value):
         return ''
 
 
-
 # register.filter('cut',cut)
 # register.filter('lower',lower)
 
