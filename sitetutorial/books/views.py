@@ -25,6 +25,11 @@ def search(request):
     return render(request,"books/search_form.html",{"errors":errors})
 
 
+def test_custom_filters(request):
+    context = {"var":"MFAISAL"}
+    return render(request,"books/custom_tags_filters.html",context)
+
+
 
     
     
